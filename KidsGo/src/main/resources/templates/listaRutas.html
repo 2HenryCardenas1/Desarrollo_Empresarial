@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!--importamos el xmlns:th para manejo de los thymeleaf-->
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Rutas</title>
+    <meta name="author" content="Henry Cardenas">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/styles.css}"/>
+    <link rel="stylesheet" th:href="@{/css/jquery-ui.min.css}"/>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous"/>
+    <link rel="stylesheet"
+          href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+          integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
+          crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
+
+</head>
+<body>
+<h1 th:text="${titulo}"></h1>
+
+</br>
+
+<div>
+    <table class="table table-striped">
+        <thead>
+        <!--Ciclo for pero con thymeleaf-->
+        <tr >
+            <th scope="col">Id ruta</th>
+            <th scope="col">Nombre Ruta</th>
+            <th scope="col">Colegio Destino</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each=" ruta : ${rutas}">
+            <th scope="row" th:text="${ruta.idRuta}"></th>
+            <th th:text="${ruta.nombreRuta}"></th>
+            <th th:text="${ruta.fkColegio.nombreColegio}"></th>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
+</body>
+</html>
