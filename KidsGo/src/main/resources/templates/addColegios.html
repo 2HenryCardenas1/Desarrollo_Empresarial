@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<!--importamos el xmlns:th para manejo de los thymeleaf-->
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Añadir Colegio</title>
+    <meta name="author" content="Henry Cardenas">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/jquery-ui.min.css}"/>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous"/>
+    <link rel="stylesheet"
+          href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+          integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
+          crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
+</head>
+<body>
+<div class="container mt-5">
+
+    <h1 th:text="${titulo}"></h1>
+    <div class="container mt-5">
+
+    <form th:objetc="${colegio}" th:action="@{/addColegios}" method="post">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputNombre">Nombre Colegio</label>
+                <input type="text" class="form-control" id="inputNombre" field="*{nombreColegio}" name="nombreColegio">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputAddress">Direccion del colegio</label>
+                <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" field="*{direccionColegio}"
+                       name="direccionColegio">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="">Telefono Colegio</label>
+            <input type="text" class="form-control" id="" placeholder="32932413"  maxlength="10" field="*{telefonoColegio}"
+                   name="telefonoColegio">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Agregar Colegio</button>
+
+    </form>
+
+    </div>
+</div>
+
+
+</body>
+</html>

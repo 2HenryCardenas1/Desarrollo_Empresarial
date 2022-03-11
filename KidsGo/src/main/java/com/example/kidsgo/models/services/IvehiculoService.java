@@ -8,4 +8,5 @@ import java.util.List;
 @Service
 public interface IvehiculoService {
     public List<Vehiculo> findAll();
+    public void save(Vehiculo vehiculo);
 }

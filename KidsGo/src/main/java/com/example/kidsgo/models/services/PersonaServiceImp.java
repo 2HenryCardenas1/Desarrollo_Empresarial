@@ -1,5 +1,6 @@
 package com.example.kidsgo.models.services;
 
+import com.example.kidsgo.entities.Colegio;
 import com.example.kidsgo.entities.Persona;
 import com.example.kidsgo.models.dao.Ipersona;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,5 +18,11 @@ public class PersonaServiceImp implements IpersonaService{
 
     public List<Persona> findAll() {
         return (List<Persona>) personaDao.findAll();
+    }
+
+    @Override
+    @Transactional
+    public void save(Persona persona){
+        personaDao.save(persona);
     }
 }

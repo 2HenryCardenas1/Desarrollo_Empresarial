@@ -24,4 +24,18 @@ public class ColegioServiceImp implements IcolegioService {
     public List<Colegio> findAll() {
         return (List<Colegio>) colegioDao.findAll();
     }
+
+    @Override
+    @Transactional
+    public void save(Colegio colegio){
+       colegioDao.save(colegio);
+    }
+
+
+    /*Buscar un colegio por id
+    @Override
+    @Transactional(readOnly = true)
+    public Colegio findColegio(Long id){
+        return colegioDao.findById(id).orElse(null);
+    }*/
 }

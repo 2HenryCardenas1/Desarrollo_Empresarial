@@ -21,7 +21,7 @@ public class PersonaTipoPersona implements Serializable {
 
     @NotNull
     //nombre de la columna de la fk, nombre de la columna a la que hace referencia la fk
-    @JoinColumn(name = "id_fk_Persona", referencedColumnName = "idpersona")
+    @JoinColumn(name = "id_fk_Persona", referencedColumnName = "idPersona")
     @ManyToOne(fetch = FetchType.LAZY)
     private Persona fkPersona;
 

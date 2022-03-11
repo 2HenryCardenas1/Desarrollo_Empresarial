@@ -3,7 +3,7 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Colegio</title>
+    <title>Añadir Colegio</title>
     <meta name="author" content="Henry Cardenas">
     <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
     <link rel="stylesheet" th:href="@{/css/styles.css}"/>
@@ -18,35 +18,24 @@
           crossorigin="anonymous"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
-
 </head>
 <body>
-<h1 th:text="${titulo}"></h1>
-
-</br>
-
 <div>
-    <table class="table table-striped">
-        <thead>
-        <!--Ciclo for pero con thymeleaf-->
-        <tr >
-            <th scope="col">Id colegio</th>
-            <th scope="col">Nombre</th>
-            <th scope="col">Direccion</th>
-            <th scope="col">Telefono</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each=" colegio : ${colegios}">
-            <td scope="row" th:text="${colegio.idColegio}"></td>
-            <td th:text="${colegio.nombreColegio}"></td>
-            <td th:text="${colegio.direccionColegio}"></td>
-            <td th:text="${colegio.telefonoColegio}"></td>
-        </tr>
-        </tbody>
-    </table>
-    <!--@{Nombre ruta a redirigir}-->
-    <a th:href="@{addColegios}" class="btn btn-primary" style="margin-left: 17rem">Añadir Colegio</a>
+    <h1 th:text="${titulo}"></h1>
+    <form th:objetc="${colegio}" th:action="@{/addColegio}" method="post">
+        <div class="row">
+            <div class="col">
+                <label for="nameColegio">Colegio</label>
+                <input type="text" class="form-control" placeholder="First name" id="nameColegio">
+            </div>
+            <div class="col">
+                <label for="direccionColegio">Direccion</label>
+                <input type="text" class="form-control" placeholder="Last name" id="direccionColegio">
+            </div>
+            <input type="submit" class="btn-primary">
+        </div>
+
+    </form>
 </div>
 
 

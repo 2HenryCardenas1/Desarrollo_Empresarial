@@ -18,4 +18,11 @@ public class VehiculoServiceImp implements IvehiculoService{
     public List<Vehiculo> findAll() {
         return (List<Vehiculo>) veiculoDao.findAll();
     }
+
+    @Override
+    @Transactional
+    public void save(Vehiculo vehiculo){
+        veiculoDao.save(vehiculo);
+    }
+
 }
