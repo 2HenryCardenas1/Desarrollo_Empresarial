@@ -7,4 +7,5 @@ import java.util.List;
 @Service
 public interface IviajeService {
     public List<Viaje> findAll();
+    public void save(Viaje viaje);
 }

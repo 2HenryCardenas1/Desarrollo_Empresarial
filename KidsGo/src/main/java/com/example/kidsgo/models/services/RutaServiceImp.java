@@ -19,4 +19,10 @@ public class RutaServiceImp implements IrutaService {
     public List<Ruta> findAll() {
         return (List<Ruta>) rutaDao.findAll();
     }
+
+    @Override
+    @Transactional
+    public void save(Ruta ruta){
+        rutaDao.save(ruta);
+    }
 }

@@ -1,5 +1,6 @@
 package com.example.kidsgo.models.services;
 
+import com.example.kidsgo.entities.Ruta;
 import com.example.kidsgo.entities.Viaje;
 import com.example.kidsgo.models.dao.Iviaje;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,5 +18,11 @@ public class ViajeServiceImp implements IviajeService{
     @Transactional(readOnly = true)
     public List<Viaje> findAll() {
         return (List<Viaje>) viajeDao.findAll();
+    }
+
+    @Override
+    @Transactional
+    public void save(Viaje viaje){
+        viajeDao.save(viaje);
     }
 }

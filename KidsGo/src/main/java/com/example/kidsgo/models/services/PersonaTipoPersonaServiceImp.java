@@ -20,4 +20,9 @@ public class PersonaTipoPersonaServiceImp implements IpersonaTipoPersonaService 
     public List<PersonaTipoPersona> findAll() {
         return (List<PersonaTipoPersona>) personaHasTipoPersonaDao.findAll();
     }
+
+    @Override
+    public String listarTipoPersona() {
+        return personaHasTipoPersonaDao.listarTipoPersona();
+    }
 }

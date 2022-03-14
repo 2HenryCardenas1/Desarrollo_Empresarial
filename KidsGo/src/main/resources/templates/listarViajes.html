@@ -3,10 +3,9 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Personas</title>
+    <title>Colegio</title>
     <meta name="author" content="Henry Cardenas">
     <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
-
     <link rel="stylesheet" th:href="@{/css/jquery-ui.min.css}"/>
     <link rel="stylesheet"
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -31,34 +30,34 @@
         <!--Ciclo for pero con thymeleaf-->
         <tr >
             <th scope="col">#</th>
-            <th scope="col">Nombre Apellido</th>
-            <th scope="col">Tipo Identificacion</th>
-            <th scope="col">Numero Identificacion</th>
-            <th scope="col">Direccion</th>
-            <th scope="col">Celular</th>
-            <th scope="col">Fecha Nacimiento</th>
-            <th scope="col">Tipo Persona</th>
-
+            <th scope="col">Fecha Creacion</th>
+            <th scope="col">Hora Inicio</th>
+            <th scope="col">Fecha inicio</th>
+            <th scope="col">Origen</th>
+            <th scope="col">Asientos disponibles</th>
+            <th scope="col">Tarifa</th>
+            <th scope="col">Colegio Destino</th>
+            <th scope="col">Dueño Vehiculo</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each=" persona : ${personas} ">
-            <th scope="row" th:text="${persona.idPersona}"></th>
-            <th th:text="${persona.nombrePersona + persona.apellidoPersona}"></th>
-            <th th:text="${persona.tipoIdentificacion}"></th>
-            <th th:text="${persona.numeroIdentificacion}"></th>
-            <th th:text="${persona.direccion}"></th>
-            <th th:text="${persona.celular}"></th>
-            <th th:text="${persona.fechaNacimiento}"></th>
-
+        <tr th:each=" viaje : ${viajes}">
+            <td scope="row" th:text="${viaje.idViaje}"></td>
+            <td th:text="${viaje.fechaCreacion}"></td>
+            <td th:text="${viaje.horaInicio}"></td>
+            <td th:text="${viaje.fechaInicio}"></td>
+            <td th:text="${viaje.origen}"></td>
+            <td th:text="${viaje.asientosDisponibles}"></td>
+            <td th:text="${viaje.tarifa}"></td>
+            <td th:text="${viaje.fkColegio.nombreColegio}"></td>
+            <!--
+            <td th:text="${viaje.fkPersona.nombrePersona}"></td>-->
 
         </tr>
-
-
         </tbody>
     </table>
     <!--@{Nombre ruta a redirigir}-->
-    <a th:href="@{addPersona}" class="btn btn-primary" style="margin-left: 17rem">Añadir Persona</a>
+    <a th:href="@{addViajes}" class="btn btn-primary" style="margin-left: 17rem">Añadir Viaje</a>
 </div>
 
 

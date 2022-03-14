@@ -8,4 +8,5 @@ import java.util.List;
 @Service
 public interface IpersonaTipoPersonaService {
     public List<PersonaTipoPersona> findAll();
+    public String listarTipoPersona();
 }
