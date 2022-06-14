@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<!--importamos el xmlns:th para manejo de los thymeleaf-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+
+    <title>Registro-KidsGo</title>
+
+    <main th:replace="default/header :: head" ></main>
+</head>
+<body>
+<header th:replace="default/header :: header">
+
+</header>
+
+<main role="main" class="container text-center  login-box " style="margin-top: 7rem">
+    <img class="mb-4 ml-3" th:src="@{/images/kidsGo.PNG}" alt="" width="250" height="100">
+    <h1 class="text-center mb-5" th:text="${titulo}"></h1>
+
+    <form th:objetc="${persona}" th:action="@{/addPersona}" method="post">
+
+        <div class="form-row text-start">
+            <div class="form-group col-md-6">
+                <label for="inputNombre">Nombre</label>
+                <input
+                        type="text"
+                        th:value="${persona.nombrePersona}"
+                        placeholder="Ingresa el nombre"
+                        class="form-control"
+                        id="inputNombre"
+                        field="*{nombrePersona}"
+                        name="nombrePersona"
+                        required
+                />
+            </div>
+            <div class="form-group col-md-6 text-start">
+                <label for="inputApellido">Apellido</label>
+                <input
+                        type="text"
+                        th:value="${persona.apellidoPersona}"
+                        placeholder="Ingresa el apellido"
+                        class="form-control"
+                        id="inputApellido"
+                        field="*{apellidoPersona}"
+                        name="apellidoPersona"
+                        required
+                />
+            </div>
+        </div>
+        <div class="form-group text-start">
+            <label for="inputAddress">Direccion de residencia</label>
+            <input
+                    type="text"
+                    th:value="${persona.direccion}"
+                    class="form-control"
+                    id="inputAddress"
+                    placeholder="1234 Main St"
+                    field="*{direccion}"
+                    name="direccion"
+                    required
+            />
+        </div>
+
+        <div class="form-row text-start">
+            <div class="form-group col-md-6">
+                <label for="inputFecha">Fecha Nacimiento</label>
+                <!--Como desahabilito el campo cuando es editar-->
+                <input
+                        type="date"
+                        th:value="${persona.fechaNacimiento}"
+                        placeholder="*{persona.fechaNacimiento}"
+
+                        class="form-control"
+                        id="inputFecha"
+                        field="*{fechaNacimiento}"
+                        name="fechaNacimiento"
+                        required
+                />
+            </div>
+            <div class="form-group col-md-6 text-start">
+                <label for="inputCelular">Celular</label>
+                <input
+                        type="text"
+                        th:value="${persona.telefono}"
+                        placeholder="Ingresa el numero de celular"
+                        class="form-control"
+                        id="inputCelular"
+                        field="*{telefono}"
+                        name="telefono"
+                        required
+                />
+            </div>
+        </div>
+
+        <div class="form-row text-start">
+            <div class="form-group col-md-6">
+                <label for="inputTipoIdentificacion">Tipo de identificacion</label>
+                <select
+                        id="inputTipoIdentificacion"
+                        class="form-control"
+                        field="*{tipoIdentificacion}"
+                        name="tipoIdentificacion"
+                        required
+                >
+                    <option value="">Selecciona un tipo de identificación</option>
+                    <option sec:authorize="hasAnyRole('ROLE_USER','ROLE_ADMIN')" th:value="${persona.tipoIdentificacion}" th:text="${persona.tipoIdentificacion}" selected ></option>
+                    <option value="C.C">C.C</option>
+                    <option value="T.I">T.I</option>
+                </select>
+            </div>
+            <div class="form-group col-md-6 text-start">
+                <label for="inputIdentificacion">Identificacion</label>
+                <input
+                        type="text"
+                        th:value="${persona.numeroIdentificacion}"
+                        placeholder="Ingresa el numero de identificacion"
+                        class="form-control"
+                        id="inputIdentificacion"
+                        field="*{numeroIdentificacion}"
+                        name="numeroIdentificacion"
+                        required
+                />
+            </div>
+        </div>
+        <div style="margin-top: 2rem; margin-bottom: 5rem;">
+            <a th:href="@{/listaPersonas}" class="btn btn-danger">Cancelar</a>
+            <button type="submit" class="btn btn-primary">Siguiente</button>
+        </div>
+
+
+    </form>
+    <!-- FOOTER -->
+    <footer class="container" th:replace="default/header :: footer">
+
+    </footer>
+</main>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<!--importamos el xmlns:th para manejo de los thymeleaf-->
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+
+    <title>Tipo de persona</title>
+    <main th:replace="default/header :: head" ></main>
+</head>
+<body>
+<header th:replace="default/header :: header">
+
+</header>
+<main role="main" class="container" style="margin-top: 7rem">
+
+
+    <h1 class="text-center" th:text="${titulo}">Asignar Tipo Persona</h1>
+
+    </br>
+    <form th:objetc="${personaTipoPersona}" th:action="@{/asignarTipoPersona}" method="post">
+
+        <div class="form-row" style="margin-left: 15rem;">
+
+            <div class="form-group col-md-3 mb3">
+                <label for="inputPersona">Persona id</label>
+                <input
+                        type="text"
+                        th:value="${id}"
+                        class="form-control"
+                        id="inputPersona"
+                        field="*{FKpersona}"
+                        name="FKpersona"
+                />
+            </div>
+            <!--Como se hace una lista select con valores de una tabla-->
+            <div class="form-group col-md-6">
+                <label for="inputTipoPersona">Tipo persona</label>
+                <select id="inputTipoPersona" class="form-control" field="*{FKtipoPersona}"
+                        name="FKtipoPersona">
+                    <option selected disabled value=""> Seleccione el tipo de persona</option>
+                    <option th:each=" tipopersona : ${tipopersona}"
+                            th:value="${tipopersona.idTipoPersona}"
+                            th:text="${tipopersona.tipoPersona}"></option>
+
+                </select>
+            </div>
+
+
+        </div>
+
+        <div style="margin-left: 29rem; margin-top: 2rem; margin-bottom: 5rem">
+            <a th:href="@{/listaPersonas}" class="btn btn-danger">Cancelar</a>
+            <button type="submit" class="btn btn-primary">Asignar</button>
+        </div>
+    </form>
+    <footer class="container" th:replace="default/header :: footer">
+
+    </footer>
+
+</main>
+
+
+</body>
+</html>

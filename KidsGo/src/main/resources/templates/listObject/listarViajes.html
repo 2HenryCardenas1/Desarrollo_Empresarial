@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<!--importamos el xmlns:th para manejo de los thymeleaf-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Lista Viajes</title>
+    <main th:replace="default/header :: head"></main>
+</head>
+
+<body>
+<header th:replace="default/header :: header">
+
+</header>
+
+<main role="main" class="container" style="margin-top: 7rem">
+    <h1 class="text-center" th:text="${titulo}">Listado Viajes Programados</h1>
+
+    </br>
+
+    <table id="tablax" class="table table-striped text-center">
+        <thead>
+        <!--Ciclo for pero con thymeleaf-->
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Fecha Creacion</th>
+            <th scope="col">Fecha inicio</th>
+            <th scope="col">Hora Inicio</th>
+            <th scope="col">Chofer</th>
+            <th scope="col">Asignar ruta</th>
+            <th scope="col">Opciones</th>
+            <th scope="col">Detalles</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each=" viaje : ${viaje}" th:if="${viaje.estado} == true">
+            <td scope="row" th:text="${viaje.idViaje}"></td>
+            <td th:text="${viaje.fechaCreacion}"></td>
+            <td th:text="${viaje.fechaInicio}"></td>
+            <td th:text="${viaje.horaInicio}"></td>
+            <td th:text="${viaje.fkPersona.nombrePersona + ' ' + viaje.fkPersona.apellidoPersona}"></td>
+            <td>
+                <a th:href="@{/viaje/asignarRuta/} + ${viaje.idViaje}"><i class="bi bi-pin-map"></i></a>
+            </td>
+            <td><a
+                    th:href="@{/deleteViajeId/} + ${viaje.idViaje}"
+                    onclick="return confirm('¿Seguro que quiere eliminar el campo?');"><i class="bi bi-trash"></i></a>
+            </td>
+            <td>
+                <a th:href="@{/details/detailViaje/} + ${viaje.idViaje}"><i class="bi bi-clipboard2-plus"></i></a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+
+
+    <!--@{Nombre ruta a redirigir}-->
+    <div style="position: static;margin-bottom: 5rem;padding: 53px 1px 1px 29rem;">
+        <a th:href="@{/}" class="btn btn-danger">Volver</a>
+        <a th:href="@{/addViaje}" sec:authorize="hasAnyRole('ROLE_USER','ROLE_ADMIN')" class="btn btn-primary">Añadir
+            Viaje</a>
+
+    </div>
+
+
+    <!-- FOOTER -->
+    <footer class="container" th:replace="default/pagination :: footer">
+
+    </footer>
+
+</main>
+
+</body>
+
+</html>

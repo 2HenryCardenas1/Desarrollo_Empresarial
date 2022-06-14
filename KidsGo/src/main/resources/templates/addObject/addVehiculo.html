@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<!--importamos el xmlns:th para manejo de los thymeleaf-->
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Añadir Vehiculo</title>
+    <main th:replace="default/header :: head"></main>
+</head>
+<body>
+<header th:replace="/default/header :: header">
+
+</header>
+<main role="main" class="container" style="margin-top: 7rem">
+    <h1 class="text-center mb-5" th:text="${titulo}">Añadir un vehiculo</h1>
+
+    <form th:objetc="${vehiculo}" th:action="@{/addVehiculo}" method="post">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="marca">Marca</label>
+                <input
+                        type="text"
+                        class="form-control"
+                        th:value="${vehiculo.marcaVehiculo}"
+                        field="*{marcaVehiculo}"
+                        name="marcaVehiculo"
+                        placeholder="Ingrese la marca del vehiculo"
+                        id="marca"
+                        required
+                />
+            </div>
+            <div class="form-group col-md-6">
+                <label for="modelo">Modelo</label>
+                <input
+                        type="text"
+                        class="form-control"
+                        th:value="${vehiculo.modeloVehiculo}"
+                        id="modelo"
+                        placeholder="Ingrese el modelo del vehiculo"
+                        field="*{modeloVehiculo}"
+                        name="modeloVehiculo"
+                        required
+                />
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="placa">Placa</label>
+                <input
+                        type="text"
+                        maxlength="7"
+                        minlength="6"
+                        th:value="${vehiculo.placaVehiculo}"
+                        class="form-control"
+                        field="*{placaVehiculo}"
+                        name="placaVehiculo"
+                        placeholder="Ingrese el numero de la placa"
+                        id="placa"
+                        required
+                />
+            </div>
+            <div class="form-group col-md-6">
+                <label for="color">Color del vehiculo</label>
+                <input
+                        type="color"
+                        class="form-control"
+                        id="color"
+                        th:value="${vehiculo.colorVehiculo}"
+                        placeholder="Ingrese el color del vehiculo"
+                        field="*{colorVehiculo}"
+                        name="colorVehiculo"
+                        required
+                />
+            </div>
+        </div>
+        <div style="margin-left: 29rem; margin-top: 2rem; margin-bottom: 5rem;">
+            <a th:href="@{/listaVehiculos}" class="btn btn-danger">Cancelar</a>
+            <button type="submit" class="btn btn-primary">Agregar</button>
+        </div>
+
+    </form>
+    <!-- FOOTER -->
+    <footer class="container" th:replace="/default/header :: footer">
+
+    </footer>
+</main>
+</body>
+</html>

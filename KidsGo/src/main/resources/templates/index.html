@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<!--importamos el xmlns:th para manejo de los thymeleaf-->
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>KidsGo</title>
+    <main th:replace="default/header :: head"></main>
+</head>
+
+<body>
+<header th:replace="default/header :: header">
+
+</header>
+
+<!-- FIN HEADER -->
+<main role="main" class="container" style="margin-top: 7rem">
+    <div class="jumbotron">
+        <h1 class="text-center mt-3" style="font-size: 5rem;" th:text="${titulo}">KidsGo</h1>
+        </br></br>
+        <p class="lead">Somos una compañía de desarrollo de software enfocada en el desarrollo de una aplicación
+            empresarial que permite a los colegios y padres de familia de la ciudad de Tunja, programar, encontrar y
+            crear viajes compartidos dentro de la comunidad escolar, con el fin de satisfacer la necesidad de acceder a
+            una opción de transporte económica, segura, cómoda, ecológica, rápida, eficiente e innovadora para movilizar
+            a los niños.</p>
+    </div>
+    <!-- FOOTER -->
+    <footer class="container" th:replace="default/header :: footer">
+    </footer>
+</main>
+</body>
+</html>

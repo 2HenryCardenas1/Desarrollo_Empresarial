@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!--importamos el xmlns:th para manejo de los thymeleaf-->
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Lista Rutas</title>
+    <main th:replace="default/header :: head"></main>
+</head>
+<body>
+<header th:replace="default/header :: header">
+
+</header>
+
+
+<main role="main" class="container" style="margin-top: 7rem">
+
+
+    <h1 class="text-center" th:text="${titulo}">Lista de rutas</h1>
+
+    </br>
+    <table id="tablax" class="table table-striped text-center">
+        <thead>
+        <!--Ciclo for pero con thymeleaf-->
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre Ruta</th>
+            <th scope="col">Tarifa</th>
+            <th scope="col">Descripcion</th>
+            <th scope="col" sec:authorize="hasAnyRole('ROLE_ADMIN')">Opciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each=" ruta : ${rutas}" th:if="${ruta.estado} == true">
+            <th scope="row" th:text="${ruta.idRuta}"></th>
+            <td th:text="${ruta.nombreRuta}"></td>
+            <td th:text="${'$'+ ruta.tarifa}"></td>
+            <td class="text-left" th:text="${ruta.descripcion}"></td>
+            <!--Editar-->
+            <td sec:authorize="hasAnyRole('ROLE_ADMIN')">
+                <a th:href="@{/addRuta/} + ${ruta.idRuta}"><i class=" bi bi-pen"></i></a>
+                <a onclick="return confirm('¿Seguro que quiere eliminar el campo?');"
+                   th:href="@{/deleteRutaId/} + ${ruta.idRuta}"><i class="bi bi-trash"></i></a>
+                <!--<a onclick="return confirm('¿Seguro que quiere eliminar el campo definitivamente?');"
+                   th:href="@{/deleteRuta/} + ${ruta.idRuta}"><i class="bi bi-shield-fill-x"></i></a>-->
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <!--@{Nombre ruta a redirigir}-->
+    <div style="position: static;margin-bottom: 5rem;padding: 53px 1px 1px 29rem;">
+        <a th:href="@{/}" class="btn btn-danger">Volver</a>
+        <a th:href="@{addRuta}" sec:authorize="hasAnyRole('ROLE_ADMIN')" class="btn btn-primary">Añadir Ruta</a>
+    </div>
+    <!-- FOOTER -->
+    <footer class="container" th:replace="default/pagination :: footer">
+
+    </footer>
+</main>
+
+
+</body>
+</html>

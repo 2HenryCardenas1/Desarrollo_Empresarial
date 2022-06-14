@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<!--importamos el xmlns:th para manejo de los thymeleaf-->
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+
+    <title>Viaje Ruta </title>
+    <main th:replace="default/header :: head" ></main>
+</head>
+<body>
+<header th:replace="default/header :: header">
+
+</header>
+<main role="main" class="container" style="margin-top: 7rem">
+
+
+    <h1 class="text-center" th:text="${titulo}"></h1>
+
+    </br>
+    <form th:objetc="${viajeRuta}" th:action="@{/viaje/asignarRuta}" method="post">
+
+        <div class="form-row" style="margin-left: 15rem;">
+
+            <div class="form-group col-md-3 mb3">
+                <label for="inputViaje">Viaje id</label>
+                <input
+                        type="text"
+                        th:value="${id}"
+                        class="form-control"
+                        id="inputViaje"
+                        field="*{fkViaje}"
+                        name="fkViaje"
+                />
+            </div>
+            <!--Como se hace una lista select con valores de una tabla-->
+            <div class="form-group col-md-6">
+                <label for="inputRuta">Ruta</label>
+                <select id="inputRuta" class="form-control" field="*{fkRuta}"
+                        name="fkRuta">
+                    <option selected disabled value="" >Eliga la ruta</option>
+                    <option th:each=" viajeruta : ${viajeruta}"
+                            th:value="${viajeruta.idRuta}"
+                            th:text="${viajeruta.nombreRuta}"></option>
+
+                </select>
+            </div>
+
+
+        </div>
+
+        <div style="margin-left: 29rem; margin-top: 2rem; margin-bottom: 5rem">
+            <a th:href="@{/listarViajes}" class="btn btn-danger">Cancelar</a>
+            <button type="submit" class="btn btn-primary">Asignar</button>
+        </div>
+    </form>
+    <footer class="container" th:replace="default/header :: footer">
+
+    </footer>
+
+</main>
+
+
+</body>
+</html>

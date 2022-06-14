@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<!--importamos el xmlns:th para manejo de los thymeleaf-->
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Registro-KidsGo</title>
+    <main th:replace="default/header :: head"></main>
+</head>
+<body>
+<header th:replace="default/header :: header">
+
+</header>
+
+<div class="container" style="margin-top: 8rem;max-width:471px;">
+
+    <div class="text-center  login-box ">
+        <form class="form-signin" th:action="@{/process_register}" th:object="${user}">
+            <img class="mb-4 ml-3" th:src="@{/images/kidsGo.PNG}" alt="" width="250" height="100">
+            <h1 class="h3 mb-3 font-weight-normal">Registro de usuario</h1>
+            <span>Ingrese el nombre de usuario y una contraseña para su cuenta</span>
+            <div class="mt-3">
+                <label for="username" class="sr-only">Nombre de usuario</label>
+                <input type="text" th:field="*{email}" class="form-control" name="username" id="username"
+                       placeholder="Nombre de usuario" autofocus required>
+
+                <label for="password" class="sr-only">Contraseña</label>
+                <input type="password" name="password" id="password" th:field="*{password}" minlength="6" maxlength="12"
+                       class="form-control mt-1" placeholder="Contraseña" required>
+
+
+                <label for="persona" class="sr-only">IdPersona</label>
+                <input type="hidden"  th:value="${idUser}" field="*{persona}" th:data="${idUser}"  class="form-control" name="persona" id="persona"
+                       th:placeholder="${personaId.idPersona}" >
+
+
+
+
+            </div>
+            <button class="btn btn-lg btn-primary btn-block" style="margin-top: 1rem;" value="Crear Usuario"
+                    type="submit">Crear Usuario
+            </button>
+            <p class="mt-5 mb-3 text-muted">&copy;2021 Henry Cardenas.</p>
+        </form>
+
+    </div>
+</div>
+
+</body>
+</html>

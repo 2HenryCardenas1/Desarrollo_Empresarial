@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title th:text="${titulo}"></title>
+    <main th:replace="default/header :: head"></main>
+</head>
+<body>
+<header th:replace="default/header :: header"></header>
+<div class="container" style="margin-top: 8rem;max-width:471px;">
+
+    <div class="text-center  login-box ">
+        <form class="form-signin" th:action="@{/login}" method="post">
+            <img class="mb-4 ml-3" th:src="@{/images/kidsGo.PNG}" alt="" width="250" height="100">
+            <h1 class="h3 mb-3 font-weight-normal">Iniciar Sesión</h1>
+            <label for="username" class="sr-only">Nombre de usuario</label>
+            <input type="text"  name="username" id="username" class="form-control" placeholder="Nombre de usuario" autofocus required>
+
+            <label for="password" class="sr-only">Contraseña</label>
+            <input type="password" name="password" id="password" class="form-control mt-1" placeholder="Contraseña" required>
+            <div class="checkbox mb-3">
+                <label>
+                    <input type="checkbox" value="remember-me"> Recordar
+                </label>
+            </div>
+
+            <!-- Error Message -->
+            <p style="color : #dc3545;" th:text="${error}"></p>
+            <p style="color : #6f94f3;" th:text="${principal}"></p>
+
+            <button class="btn btn-lg btn-primary btn-block" value="Iniciar Sesión" type="submit">Iniciar Sesión</button>
+            <p class="mt-5 mb-3 text-muted">&copy;2021 Henry Cardenas.</p>
+        </form>
+
+    </div>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+

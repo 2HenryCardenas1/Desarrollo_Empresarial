@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration Success</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+    <main th:replace="default/headerCreateUser :: head"></main>
+</head>
+<body>
+
+<header th:replace="default/headerCreateUser :: headerCreate">
+
+</header>
+<div class="container" style="margin-top: 8rem;max-width:471px;">
+
+
+    <div class="text-center  login-box ">
+
+        <form class="form-signin" th:action="@{/save}" th:object="${rol}">
+            <img class="mb-4 ml-3" th:src="@{/images/kidsGo.PNG}" alt="" width="250" height="100">
+            <h1 class="h3 mb-3 font-weight-normal text-success">Registro exitoso</h1>
+            <span>Bienvenido a la familia KidsGo, ya puedes programar tus proximos viajes</span>
+            <div class="mt-3">
+                <label for="usuario" class="sr-only">IdPersona</label>
+                <input type="hidden" th:value="${iduser}" field="*{usuario}" th:data="${iduser}" class="form-control"
+                       name="usuario" id="usuario"
+                       th:placeholder="${iduser}">
+            </div>
+            <button class="btn btn-lg btn-primary btn-block" style="margin-top: 1rem;" value="Iniciar Sesion"
+                    type="submit">Ir a iniciar sesion
+            </button>
+            <p class="mt-5 mb-3 text-muted">&copy;2021 Henry Cardenas.</p>
+        </form>
+
+    </div>
+</div>
+
+</body>
+</html>
+
+
+
